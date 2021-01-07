@@ -2412,6 +2412,765 @@ end //end of reset_on_sr_p
 
 end: inputs_16
 
+if(inputs_p == 17)
+begin: inputs_17
+
+logic [17-1: 0 ] sel_one_hot_n;
+
+always_comb
+begin
+  unique casez({last_r, reqs_i})
+    22'b?????_00000000000000000: begin sel_one_hot_n = 17'b00000000000000000; tag_o = (lg_inputs_p) ' (0); end // X
+    22'b00000_???????????????1?: begin sel_one_hot_n= 17'b00000000000000010; tag_o = (lg_inputs_p) ' (1); end
+    22'b00000_??????????????10?: begin sel_one_hot_n= 17'b00000000000000100; tag_o = (lg_inputs_p) ' (2); end
+    22'b00000_?????????????100?: begin sel_one_hot_n= 17'b00000000000001000; tag_o = (lg_inputs_p) ' (3); end
+    22'b00000_????????????1000?: begin sel_one_hot_n= 17'b00000000000010000; tag_o = (lg_inputs_p) ' (4); end
+    22'b00000_???????????10000?: begin sel_one_hot_n= 17'b00000000000100000; tag_o = (lg_inputs_p) ' (5); end
+    22'b00000_??????????100000?: begin sel_one_hot_n= 17'b00000000001000000; tag_o = (lg_inputs_p) ' (6); end
+    22'b00000_?????????1000000?: begin sel_one_hot_n= 17'b00000000010000000; tag_o = (lg_inputs_p) ' (7); end
+    22'b00000_????????10000000?: begin sel_one_hot_n= 17'b00000000100000000; tag_o = (lg_inputs_p) ' (8); end
+    22'b00000_???????100000000?: begin sel_one_hot_n= 17'b00000001000000000; tag_o = (lg_inputs_p) ' (9); end
+    22'b00000_??????1000000000?: begin sel_one_hot_n= 17'b00000010000000000; tag_o = (lg_inputs_p) ' (10); end
+    22'b00000_?????10000000000?: begin sel_one_hot_n= 17'b00000100000000000; tag_o = (lg_inputs_p) ' (11); end
+    22'b00000_????100000000000?: begin sel_one_hot_n= 17'b00001000000000000; tag_o = (lg_inputs_p) ' (12); end
+    22'b00000_???1000000000000?: begin sel_one_hot_n= 17'b00010000000000000; tag_o = (lg_inputs_p) ' (13); end
+    22'b00000_??10000000000000?: begin sel_one_hot_n= 17'b00100000000000000; tag_o = (lg_inputs_p) ' (14); end
+    22'b00000_?100000000000000?: begin sel_one_hot_n= 17'b01000000000000000; tag_o = (lg_inputs_p) ' (15); end
+    22'b00000_1000000000000000?: begin sel_one_hot_n= 17'b10000000000000000; tag_o = (lg_inputs_p) ' (16); end
+    22'b00000_00000000000000001: begin sel_one_hot_n= 17'b00000000000000001; tag_o = (lg_inputs_p) ' (0); end
+    22'b00001_??????????????1??: begin sel_one_hot_n= 17'b00000000000000100; tag_o = (lg_inputs_p) ' (2); end
+    22'b00001_?????????????10??: begin sel_one_hot_n= 17'b00000000000001000; tag_o = (lg_inputs_p) ' (3); end
+    22'b00001_????????????100??: begin sel_one_hot_n= 17'b00000000000010000; tag_o = (lg_inputs_p) ' (4); end
+    22'b00001_???????????1000??: begin sel_one_hot_n= 17'b00000000000100000; tag_o = (lg_inputs_p) ' (5); end
+    22'b00001_??????????10000??: begin sel_one_hot_n= 17'b00000000001000000; tag_o = (lg_inputs_p) ' (6); end
+    22'b00001_?????????100000??: begin sel_one_hot_n= 17'b00000000010000000; tag_o = (lg_inputs_p) ' (7); end
+    22'b00001_????????1000000??: begin sel_one_hot_n= 17'b00000000100000000; tag_o = (lg_inputs_p) ' (8); end
+    22'b00001_???????10000000??: begin sel_one_hot_n= 17'b00000001000000000; tag_o = (lg_inputs_p) ' (9); end
+    22'b00001_??????100000000??: begin sel_one_hot_n= 17'b00000010000000000; tag_o = (lg_inputs_p) ' (10); end
+    22'b00001_?????1000000000??: begin sel_one_hot_n= 17'b00000100000000000; tag_o = (lg_inputs_p) ' (11); end
+    22'b00001_????10000000000??: begin sel_one_hot_n= 17'b00001000000000000; tag_o = (lg_inputs_p) ' (12); end
+    22'b00001_???100000000000??: begin sel_one_hot_n= 17'b00010000000000000; tag_o = (lg_inputs_p) ' (13); end
+    22'b00001_??1000000000000??: begin sel_one_hot_n= 17'b00100000000000000; tag_o = (lg_inputs_p) ' (14); end
+    22'b00001_?10000000000000??: begin sel_one_hot_n= 17'b01000000000000000; tag_o = (lg_inputs_p) ' (15); end
+    22'b00001_100000000000000??: begin sel_one_hot_n= 17'b10000000000000000; tag_o = (lg_inputs_p) ' (16); end
+    22'b00001_000000000000000?1: begin sel_one_hot_n= 17'b00000000000000001; tag_o = (lg_inputs_p) ' (0); end
+    22'b00001_00000000000000010: begin sel_one_hot_n= 17'b00000000000000010; tag_o = (lg_inputs_p) ' (1); end
+    22'b00010_?????????????1???: begin sel_one_hot_n= 17'b00000000000001000; tag_o = (lg_inputs_p) ' (3); end
+    22'b00010_????????????10???: begin sel_one_hot_n= 17'b00000000000010000; tag_o = (lg_inputs_p) ' (4); end
+    22'b00010_???????????100???: begin sel_one_hot_n= 17'b00000000000100000; tag_o = (lg_inputs_p) ' (5); end
+    22'b00010_??????????1000???: begin sel_one_hot_n= 17'b00000000001000000; tag_o = (lg_inputs_p) ' (6); end
+    22'b00010_?????????10000???: begin sel_one_hot_n= 17'b00000000010000000; tag_o = (lg_inputs_p) ' (7); end
+    22'b00010_????????100000???: begin sel_one_hot_n= 17'b00000000100000000; tag_o = (lg_inputs_p) ' (8); end
+    22'b00010_???????1000000???: begin sel_one_hot_n= 17'b00000001000000000; tag_o = (lg_inputs_p) ' (9); end
+    22'b00010_??????10000000???: begin sel_one_hot_n= 17'b00000010000000000; tag_o = (lg_inputs_p) ' (10); end
+    22'b00010_?????100000000???: begin sel_one_hot_n= 17'b00000100000000000; tag_o = (lg_inputs_p) ' (11); end
+    22'b00010_????1000000000???: begin sel_one_hot_n= 17'b00001000000000000; tag_o = (lg_inputs_p) ' (12); end
+    22'b00010_???10000000000???: begin sel_one_hot_n= 17'b00010000000000000; tag_o = (lg_inputs_p) ' (13); end
+    22'b00010_??100000000000???: begin sel_one_hot_n= 17'b00100000000000000; tag_o = (lg_inputs_p) ' (14); end
+    22'b00010_?1000000000000???: begin sel_one_hot_n= 17'b01000000000000000; tag_o = (lg_inputs_p) ' (15); end
+    22'b00010_10000000000000???: begin sel_one_hot_n= 17'b10000000000000000; tag_o = (lg_inputs_p) ' (16); end
+    22'b00010_00000000000000??1: begin sel_one_hot_n= 17'b00000000000000001; tag_o = (lg_inputs_p) ' (0); end
+    22'b00010_00000000000000?10: begin sel_one_hot_n= 17'b00000000000000010; tag_o = (lg_inputs_p) ' (1); end
+    22'b00010_00000000000000100: begin sel_one_hot_n= 17'b00000000000000100; tag_o = (lg_inputs_p) ' (2); end
+    22'b00011_????????????1????: begin sel_one_hot_n= 17'b00000000000010000; tag_o = (lg_inputs_p) ' (4); end
+    22'b00011_???????????10????: begin sel_one_hot_n= 17'b00000000000100000; tag_o = (lg_inputs_p) ' (5); end
+    22'b00011_??????????100????: begin sel_one_hot_n= 17'b00000000001000000; tag_o = (lg_inputs_p) ' (6); end
+    22'b00011_?????????1000????: begin sel_one_hot_n= 17'b00000000010000000; tag_o = (lg_inputs_p) ' (7); end
+    22'b00011_????????10000????: begin sel_one_hot_n= 17'b00000000100000000; tag_o = (lg_inputs_p) ' (8); end
+    22'b00011_???????100000????: begin sel_one_hot_n= 17'b00000001000000000; tag_o = (lg_inputs_p) ' (9); end
+    22'b00011_??????1000000????: begin sel_one_hot_n= 17'b00000010000000000; tag_o = (lg_inputs_p) ' (10); end
+    22'b00011_?????10000000????: begin sel_one_hot_n= 17'b00000100000000000; tag_o = (lg_inputs_p) ' (11); end
+    22'b00011_????100000000????: begin sel_one_hot_n= 17'b00001000000000000; tag_o = (lg_inputs_p) ' (12); end
+    22'b00011_???1000000000????: begin sel_one_hot_n= 17'b00010000000000000; tag_o = (lg_inputs_p) ' (13); end
+    22'b00011_??10000000000????: begin sel_one_hot_n= 17'b00100000000000000; tag_o = (lg_inputs_p) ' (14); end
+    22'b00011_?100000000000????: begin sel_one_hot_n= 17'b01000000000000000; tag_o = (lg_inputs_p) ' (15); end
+    22'b00011_1000000000000????: begin sel_one_hot_n= 17'b10000000000000000; tag_o = (lg_inputs_p) ' (16); end
+    22'b00011_0000000000000???1: begin sel_one_hot_n= 17'b00000000000000001; tag_o = (lg_inputs_p) ' (0); end
+    22'b00011_0000000000000??10: begin sel_one_hot_n= 17'b00000000000000010; tag_o = (lg_inputs_p) ' (1); end
+    22'b00011_0000000000000?100: begin sel_one_hot_n= 17'b00000000000000100; tag_o = (lg_inputs_p) ' (2); end
+    22'b00011_00000000000001000: begin sel_one_hot_n= 17'b00000000000001000; tag_o = (lg_inputs_p) ' (3); end
+    22'b00100_???????????1?????: begin sel_one_hot_n= 17'b00000000000100000; tag_o = (lg_inputs_p) ' (5); end
+    22'b00100_??????????10?????: begin sel_one_hot_n= 17'b00000000001000000; tag_o = (lg_inputs_p) ' (6); end
+    22'b00100_?????????100?????: begin sel_one_hot_n= 17'b00000000010000000; tag_o = (lg_inputs_p) ' (7); end
+    22'b00100_????????1000?????: begin sel_one_hot_n= 17'b00000000100000000; tag_o = (lg_inputs_p) ' (8); end
+    22'b00100_???????10000?????: begin sel_one_hot_n= 17'b00000001000000000; tag_o = (lg_inputs_p) ' (9); end
+    22'b00100_??????100000?????: begin sel_one_hot_n= 17'b00000010000000000; tag_o = (lg_inputs_p) ' (10); end
+    22'b00100_?????1000000?????: begin sel_one_hot_n= 17'b00000100000000000; tag_o = (lg_inputs_p) ' (11); end
+    22'b00100_????10000000?????: begin sel_one_hot_n= 17'b00001000000000000; tag_o = (lg_inputs_p) ' (12); end
+    22'b00100_???100000000?????: begin sel_one_hot_n= 17'b00010000000000000; tag_o = (lg_inputs_p) ' (13); end
+    22'b00100_??1000000000?????: begin sel_one_hot_n= 17'b00100000000000000; tag_o = (lg_inputs_p) ' (14); end
+    22'b00100_?10000000000?????: begin sel_one_hot_n= 17'b01000000000000000; tag_o = (lg_inputs_p) ' (15); end
+    22'b00100_100000000000?????: begin sel_one_hot_n= 17'b10000000000000000; tag_o = (lg_inputs_p) ' (16); end
+    22'b00100_000000000000????1: begin sel_one_hot_n= 17'b00000000000000001; tag_o = (lg_inputs_p) ' (0); end
+    22'b00100_000000000000???10: begin sel_one_hot_n= 17'b00000000000000010; tag_o = (lg_inputs_p) ' (1); end
+    22'b00100_000000000000??100: begin sel_one_hot_n= 17'b00000000000000100; tag_o = (lg_inputs_p) ' (2); end
+    22'b00100_000000000000?1000: begin sel_one_hot_n= 17'b00000000000001000; tag_o = (lg_inputs_p) ' (3); end
+    22'b00100_00000000000010000: begin sel_one_hot_n= 17'b00000000000010000; tag_o = (lg_inputs_p) ' (4); end
+    22'b00101_??????????1??????: begin sel_one_hot_n= 17'b00000000001000000; tag_o = (lg_inputs_p) ' (6); end
+    22'b00101_?????????10??????: begin sel_one_hot_n= 17'b00000000010000000; tag_o = (lg_inputs_p) ' (7); end
+    22'b00101_????????100??????: begin sel_one_hot_n= 17'b00000000100000000; tag_o = (lg_inputs_p) ' (8); end
+    22'b00101_???????1000??????: begin sel_one_hot_n= 17'b00000001000000000; tag_o = (lg_inputs_p) ' (9); end
+    22'b00101_??????10000??????: begin sel_one_hot_n= 17'b00000010000000000; tag_o = (lg_inputs_p) ' (10); end
+    22'b00101_?????100000??????: begin sel_one_hot_n= 17'b00000100000000000; tag_o = (lg_inputs_p) ' (11); end
+    22'b00101_????1000000??????: begin sel_one_hot_n= 17'b00001000000000000; tag_o = (lg_inputs_p) ' (12); end
+    22'b00101_???10000000??????: begin sel_one_hot_n= 17'b00010000000000000; tag_o = (lg_inputs_p) ' (13); end
+    22'b00101_??100000000??????: begin sel_one_hot_n= 17'b00100000000000000; tag_o = (lg_inputs_p) ' (14); end
+    22'b00101_?1000000000??????: begin sel_one_hot_n= 17'b01000000000000000; tag_o = (lg_inputs_p) ' (15); end
+    22'b00101_10000000000??????: begin sel_one_hot_n= 17'b10000000000000000; tag_o = (lg_inputs_p) ' (16); end
+    22'b00101_00000000000?????1: begin sel_one_hot_n= 17'b00000000000000001; tag_o = (lg_inputs_p) ' (0); end
+    22'b00101_00000000000????10: begin sel_one_hot_n= 17'b00000000000000010; tag_o = (lg_inputs_p) ' (1); end
+    22'b00101_00000000000???100: begin sel_one_hot_n= 17'b00000000000000100; tag_o = (lg_inputs_p) ' (2); end
+    22'b00101_00000000000??1000: begin sel_one_hot_n= 17'b00000000000001000; tag_o = (lg_inputs_p) ' (3); end
+    22'b00101_00000000000?10000: begin sel_one_hot_n= 17'b00000000000010000; tag_o = (lg_inputs_p) ' (4); end
+    22'b00101_00000000000100000: begin sel_one_hot_n= 17'b00000000000100000; tag_o = (lg_inputs_p) ' (5); end
+    22'b00110_?????????1???????: begin sel_one_hot_n= 17'b00000000010000000; tag_o = (lg_inputs_p) ' (7); end
+    22'b00110_????????10???????: begin sel_one_hot_n= 17'b00000000100000000; tag_o = (lg_inputs_p) ' (8); end
+    22'b00110_???????100???????: begin sel_one_hot_n= 17'b00000001000000000; tag_o = (lg_inputs_p) ' (9); end
+    22'b00110_??????1000???????: begin sel_one_hot_n= 17'b00000010000000000; tag_o = (lg_inputs_p) ' (10); end
+    22'b00110_?????10000???????: begin sel_one_hot_n= 17'b00000100000000000; tag_o = (lg_inputs_p) ' (11); end
+    22'b00110_????100000???????: begin sel_one_hot_n= 17'b00001000000000000; tag_o = (lg_inputs_p) ' (12); end
+    22'b00110_???1000000???????: begin sel_one_hot_n= 17'b00010000000000000; tag_o = (lg_inputs_p) ' (13); end
+    22'b00110_??10000000???????: begin sel_one_hot_n= 17'b00100000000000000; tag_o = (lg_inputs_p) ' (14); end
+    22'b00110_?100000000???????: begin sel_one_hot_n= 17'b01000000000000000; tag_o = (lg_inputs_p) ' (15); end
+    22'b00110_1000000000???????: begin sel_one_hot_n= 17'b10000000000000000; tag_o = (lg_inputs_p) ' (16); end
+    22'b00110_0000000000??????1: begin sel_one_hot_n= 17'b00000000000000001; tag_o = (lg_inputs_p) ' (0); end
+    22'b00110_0000000000?????10: begin sel_one_hot_n= 17'b00000000000000010; tag_o = (lg_inputs_p) ' (1); end
+    22'b00110_0000000000????100: begin sel_one_hot_n= 17'b00000000000000100; tag_o = (lg_inputs_p) ' (2); end
+    22'b00110_0000000000???1000: begin sel_one_hot_n= 17'b00000000000001000; tag_o = (lg_inputs_p) ' (3); end
+    22'b00110_0000000000??10000: begin sel_one_hot_n= 17'b00000000000010000; tag_o = (lg_inputs_p) ' (4); end
+    22'b00110_0000000000?100000: begin sel_one_hot_n= 17'b00000000000100000; tag_o = (lg_inputs_p) ' (5); end
+    22'b00110_00000000001000000: begin sel_one_hot_n= 17'b00000000001000000; tag_o = (lg_inputs_p) ' (6); end
+    22'b00111_????????1????????: begin sel_one_hot_n= 17'b00000000100000000; tag_o = (lg_inputs_p) ' (8); end
+    22'b00111_???????10????????: begin sel_one_hot_n= 17'b00000001000000000; tag_o = (lg_inputs_p) ' (9); end
+    22'b00111_??????100????????: begin sel_one_hot_n= 17'b00000010000000000; tag_o = (lg_inputs_p) ' (10); end
+    22'b00111_?????1000????????: begin sel_one_hot_n= 17'b00000100000000000; tag_o = (lg_inputs_p) ' (11); end
+    22'b00111_????10000????????: begin sel_one_hot_n= 17'b00001000000000000; tag_o = (lg_inputs_p) ' (12); end
+    22'b00111_???100000????????: begin sel_one_hot_n= 17'b00010000000000000; tag_o = (lg_inputs_p) ' (13); end
+    22'b00111_??1000000????????: begin sel_one_hot_n= 17'b00100000000000000; tag_o = (lg_inputs_p) ' (14); end
+    22'b00111_?10000000????????: begin sel_one_hot_n= 17'b01000000000000000; tag_o = (lg_inputs_p) ' (15); end
+    22'b00111_100000000????????: begin sel_one_hot_n= 17'b10000000000000000; tag_o = (lg_inputs_p) ' (16); end
+    22'b00111_000000000???????1: begin sel_one_hot_n= 17'b00000000000000001; tag_o = (lg_inputs_p) ' (0); end
+    22'b00111_000000000??????10: begin sel_one_hot_n= 17'b00000000000000010; tag_o = (lg_inputs_p) ' (1); end
+    22'b00111_000000000?????100: begin sel_one_hot_n= 17'b00000000000000100; tag_o = (lg_inputs_p) ' (2); end
+    22'b00111_000000000????1000: begin sel_one_hot_n= 17'b00000000000001000; tag_o = (lg_inputs_p) ' (3); end
+    22'b00111_000000000???10000: begin sel_one_hot_n= 17'b00000000000010000; tag_o = (lg_inputs_p) ' (4); end
+    22'b00111_000000000??100000: begin sel_one_hot_n= 17'b00000000000100000; tag_o = (lg_inputs_p) ' (5); end
+    22'b00111_000000000?1000000: begin sel_one_hot_n= 17'b00000000001000000; tag_o = (lg_inputs_p) ' (6); end
+    22'b00111_00000000010000000: begin sel_one_hot_n= 17'b00000000010000000; tag_o = (lg_inputs_p) ' (7); end
+    22'b01000_???????1?????????: begin sel_one_hot_n= 17'b00000001000000000; tag_o = (lg_inputs_p) ' (9); end
+    22'b01000_??????10?????????: begin sel_one_hot_n= 17'b00000010000000000; tag_o = (lg_inputs_p) ' (10); end
+    22'b01000_?????100?????????: begin sel_one_hot_n= 17'b00000100000000000; tag_o = (lg_inputs_p) ' (11); end
+    22'b01000_????1000?????????: begin sel_one_hot_n= 17'b00001000000000000; tag_o = (lg_inputs_p) ' (12); end
+    22'b01000_???10000?????????: begin sel_one_hot_n= 17'b00010000000000000; tag_o = (lg_inputs_p) ' (13); end
+    22'b01000_??100000?????????: begin sel_one_hot_n= 17'b00100000000000000; tag_o = (lg_inputs_p) ' (14); end
+    22'b01000_?1000000?????????: begin sel_one_hot_n= 17'b01000000000000000; tag_o = (lg_inputs_p) ' (15); end
+    22'b01000_10000000?????????: begin sel_one_hot_n= 17'b10000000000000000; tag_o = (lg_inputs_p) ' (16); end
+    22'b01000_00000000????????1: begin sel_one_hot_n= 17'b00000000000000001; tag_o = (lg_inputs_p) ' (0); end
+    22'b01000_00000000???????10: begin sel_one_hot_n= 17'b00000000000000010; tag_o = (lg_inputs_p) ' (1); end
+    22'b01000_00000000??????100: begin sel_one_hot_n= 17'b00000000000000100; tag_o = (lg_inputs_p) ' (2); end
+    22'b01000_00000000?????1000: begin sel_one_hot_n= 17'b00000000000001000; tag_o = (lg_inputs_p) ' (3); end
+    22'b01000_00000000????10000: begin sel_one_hot_n= 17'b00000000000010000; tag_o = (lg_inputs_p) ' (4); end
+    22'b01000_00000000???100000: begin sel_one_hot_n= 17'b00000000000100000; tag_o = (lg_inputs_p) ' (5); end
+    22'b01000_00000000??1000000: begin sel_one_hot_n= 17'b00000000001000000; tag_o = (lg_inputs_p) ' (6); end
+    22'b01000_00000000?10000000: begin sel_one_hot_n= 17'b00000000010000000; tag_o = (lg_inputs_p) ' (7); end
+    22'b01000_00000000100000000: begin sel_one_hot_n= 17'b00000000100000000; tag_o = (lg_inputs_p) ' (8); end
+    22'b01001_??????1??????????: begin sel_one_hot_n= 17'b00000010000000000; tag_o = (lg_inputs_p) ' (10); end
+    22'b01001_?????10??????????: begin sel_one_hot_n= 17'b00000100000000000; tag_o = (lg_inputs_p) ' (11); end
+    22'b01001_????100??????????: begin sel_one_hot_n= 17'b00001000000000000; tag_o = (lg_inputs_p) ' (12); end
+    22'b01001_???1000??????????: begin sel_one_hot_n= 17'b00010000000000000; tag_o = (lg_inputs_p) ' (13); end
+    22'b01001_??10000??????????: begin sel_one_hot_n= 17'b00100000000000000; tag_o = (lg_inputs_p) ' (14); end
+    22'b01001_?100000??????????: begin sel_one_hot_n= 17'b01000000000000000; tag_o = (lg_inputs_p) ' (15); end
+    22'b01001_1000000??????????: begin sel_one_hot_n= 17'b10000000000000000; tag_o = (lg_inputs_p) ' (16); end
+    22'b01001_0000000?????????1: begin sel_one_hot_n= 17'b00000000000000001; tag_o = (lg_inputs_p) ' (0); end
+    22'b01001_0000000????????10: begin sel_one_hot_n= 17'b00000000000000010; tag_o = (lg_inputs_p) ' (1); end
+    22'b01001_0000000???????100: begin sel_one_hot_n= 17'b00000000000000100; tag_o = (lg_inputs_p) ' (2); end
+    22'b01001_0000000??????1000: begin sel_one_hot_n= 17'b00000000000001000; tag_o = (lg_inputs_p) ' (3); end
+    22'b01001_0000000?????10000: begin sel_one_hot_n= 17'b00000000000010000; tag_o = (lg_inputs_p) ' (4); end
+    22'b01001_0000000????100000: begin sel_one_hot_n= 17'b00000000000100000; tag_o = (lg_inputs_p) ' (5); end
+    22'b01001_0000000???1000000: begin sel_one_hot_n= 17'b00000000001000000; tag_o = (lg_inputs_p) ' (6); end
+    22'b01001_0000000??10000000: begin sel_one_hot_n= 17'b00000000010000000; tag_o = (lg_inputs_p) ' (7); end
+    22'b01001_0000000?100000000: begin sel_one_hot_n= 17'b00000000100000000; tag_o = (lg_inputs_p) ' (8); end
+    22'b01001_00000001000000000: begin sel_one_hot_n= 17'b00000001000000000; tag_o = (lg_inputs_p) ' (9); end
+    22'b01010_?????1???????????: begin sel_one_hot_n= 17'b00000100000000000; tag_o = (lg_inputs_p) ' (11); end
+    22'b01010_????10???????????: begin sel_one_hot_n= 17'b00001000000000000; tag_o = (lg_inputs_p) ' (12); end
+    22'b01010_???100???????????: begin sel_one_hot_n= 17'b00010000000000000; tag_o = (lg_inputs_p) ' (13); end
+    22'b01010_??1000???????????: begin sel_one_hot_n= 17'b00100000000000000; tag_o = (lg_inputs_p) ' (14); end
+    22'b01010_?10000???????????: begin sel_one_hot_n= 17'b01000000000000000; tag_o = (lg_inputs_p) ' (15); end
+    22'b01010_100000???????????: begin sel_one_hot_n= 17'b10000000000000000; tag_o = (lg_inputs_p) ' (16); end
+    22'b01010_000000??????????1: begin sel_one_hot_n= 17'b00000000000000001; tag_o = (lg_inputs_p) ' (0); end
+    22'b01010_000000?????????10: begin sel_one_hot_n= 17'b00000000000000010; tag_o = (lg_inputs_p) ' (1); end
+    22'b01010_000000????????100: begin sel_one_hot_n= 17'b00000000000000100; tag_o = (lg_inputs_p) ' (2); end
+    22'b01010_000000???????1000: begin sel_one_hot_n= 17'b00000000000001000; tag_o = (lg_inputs_p) ' (3); end
+    22'b01010_000000??????10000: begin sel_one_hot_n= 17'b00000000000010000; tag_o = (lg_inputs_p) ' (4); end
+    22'b01010_000000?????100000: begin sel_one_hot_n= 17'b00000000000100000; tag_o = (lg_inputs_p) ' (5); end
+    22'b01010_000000????1000000: begin sel_one_hot_n= 17'b00000000001000000; tag_o = (lg_inputs_p) ' (6); end
+    22'b01010_000000???10000000: begin sel_one_hot_n= 17'b00000000010000000; tag_o = (lg_inputs_p) ' (7); end
+    22'b01010_000000??100000000: begin sel_one_hot_n= 17'b00000000100000000; tag_o = (lg_inputs_p) ' (8); end
+    22'b01010_000000?1000000000: begin sel_one_hot_n= 17'b00000001000000000; tag_o = (lg_inputs_p) ' (9); end
+    22'b01010_00000010000000000: begin sel_one_hot_n= 17'b00000010000000000; tag_o = (lg_inputs_p) ' (10); end
+    22'b01011_????1????????????: begin sel_one_hot_n= 17'b00001000000000000; tag_o = (lg_inputs_p) ' (12); end
+    22'b01011_???10????????????: begin sel_one_hot_n= 17'b00010000000000000; tag_o = (lg_inputs_p) ' (13); end
+    22'b01011_??100????????????: begin sel_one_hot_n= 17'b00100000000000000; tag_o = (lg_inputs_p) ' (14); end
+    22'b01011_?1000????????????: begin sel_one_hot_n= 17'b01000000000000000; tag_o = (lg_inputs_p) ' (15); end
+    22'b01011_10000????????????: begin sel_one_hot_n= 17'b10000000000000000; tag_o = (lg_inputs_p) ' (16); end
+    22'b01011_00000???????????1: begin sel_one_hot_n= 17'b00000000000000001; tag_o = (lg_inputs_p) ' (0); end
+    22'b01011_00000??????????10: begin sel_one_hot_n= 17'b00000000000000010; tag_o = (lg_inputs_p) ' (1); end
+    22'b01011_00000?????????100: begin sel_one_hot_n= 17'b00000000000000100; tag_o = (lg_inputs_p) ' (2); end
+    22'b01011_00000????????1000: begin sel_one_hot_n= 17'b00000000000001000; tag_o = (lg_inputs_p) ' (3); end
+    22'b01011_00000???????10000: begin sel_one_hot_n= 17'b00000000000010000; tag_o = (lg_inputs_p) ' (4); end
+    22'b01011_00000??????100000: begin sel_one_hot_n= 17'b00000000000100000; tag_o = (lg_inputs_p) ' (5); end
+    22'b01011_00000?????1000000: begin sel_one_hot_n= 17'b00000000001000000; tag_o = (lg_inputs_p) ' (6); end
+    22'b01011_00000????10000000: begin sel_one_hot_n= 17'b00000000010000000; tag_o = (lg_inputs_p) ' (7); end
+    22'b01011_00000???100000000: begin sel_one_hot_n= 17'b00000000100000000; tag_o = (lg_inputs_p) ' (8); end
+    22'b01011_00000??1000000000: begin sel_one_hot_n= 17'b00000001000000000; tag_o = (lg_inputs_p) ' (9); end
+    22'b01011_00000?10000000000: begin sel_one_hot_n= 17'b00000010000000000; tag_o = (lg_inputs_p) ' (10); end
+    22'b01011_00000100000000000: begin sel_one_hot_n= 17'b00000100000000000; tag_o = (lg_inputs_p) ' (11); end
+    22'b01100_???1?????????????: begin sel_one_hot_n= 17'b00010000000000000; tag_o = (lg_inputs_p) ' (13); end
+    22'b01100_??10?????????????: begin sel_one_hot_n= 17'b00100000000000000; tag_o = (lg_inputs_p) ' (14); end
+    22'b01100_?100?????????????: begin sel_one_hot_n= 17'b01000000000000000; tag_o = (lg_inputs_p) ' (15); end
+    22'b01100_1000?????????????: begin sel_one_hot_n= 17'b10000000000000000; tag_o = (lg_inputs_p) ' (16); end
+    22'b01100_0000????????????1: begin sel_one_hot_n= 17'b00000000000000001; tag_o = (lg_inputs_p) ' (0); end
+    22'b01100_0000???????????10: begin sel_one_hot_n= 17'b00000000000000010; tag_o = (lg_inputs_p) ' (1); end
+    22'b01100_0000??????????100: begin sel_one_hot_n= 17'b00000000000000100; tag_o = (lg_inputs_p) ' (2); end
+    22'b01100_0000?????????1000: begin sel_one_hot_n= 17'b00000000000001000; tag_o = (lg_inputs_p) ' (3); end
+    22'b01100_0000????????10000: begin sel_one_hot_n= 17'b00000000000010000; tag_o = (lg_inputs_p) ' (4); end
+    22'b01100_0000???????100000: begin sel_one_hot_n= 17'b00000000000100000; tag_o = (lg_inputs_p) ' (5); end
+    22'b01100_0000??????1000000: begin sel_one_hot_n= 17'b00000000001000000; tag_o = (lg_inputs_p) ' (6); end
+    22'b01100_0000?????10000000: begin sel_one_hot_n= 17'b00000000010000000; tag_o = (lg_inputs_p) ' (7); end
+    22'b01100_0000????100000000: begin sel_one_hot_n= 17'b00000000100000000; tag_o = (lg_inputs_p) ' (8); end
+    22'b01100_0000???1000000000: begin sel_one_hot_n= 17'b00000001000000000; tag_o = (lg_inputs_p) ' (9); end
+    22'b01100_0000??10000000000: begin sel_one_hot_n= 17'b00000010000000000; tag_o = (lg_inputs_p) ' (10); end
+    22'b01100_0000?100000000000: begin sel_one_hot_n= 17'b00000100000000000; tag_o = (lg_inputs_p) ' (11); end
+    22'b01100_00001000000000000: begin sel_one_hot_n= 17'b00001000000000000; tag_o = (lg_inputs_p) ' (12); end
+    22'b01101_??1??????????????: begin sel_one_hot_n= 17'b00100000000000000; tag_o = (lg_inputs_p) ' (14); end
+    22'b01101_?10??????????????: begin sel_one_hot_n= 17'b01000000000000000; tag_o = (lg_inputs_p) ' (15); end
+    22'b01101_100??????????????: begin sel_one_hot_n= 17'b10000000000000000; tag_o = (lg_inputs_p) ' (16); end
+    22'b01101_000?????????????1: begin sel_one_hot_n= 17'b00000000000000001; tag_o = (lg_inputs_p) ' (0); end
+    22'b01101_000????????????10: begin sel_one_hot_n= 17'b00000000000000010; tag_o = (lg_inputs_p) ' (1); end
+    22'b01101_000???????????100: begin sel_one_hot_n= 17'b00000000000000100; tag_o = (lg_inputs_p) ' (2); end
+    22'b01101_000??????????1000: begin sel_one_hot_n= 17'b00000000000001000; tag_o = (lg_inputs_p) ' (3); end
+    22'b01101_000?????????10000: begin sel_one_hot_n= 17'b00000000000010000; tag_o = (lg_inputs_p) ' (4); end
+    22'b01101_000????????100000: begin sel_one_hot_n= 17'b00000000000100000; tag_o = (lg_inputs_p) ' (5); end
+    22'b01101_000???????1000000: begin sel_one_hot_n= 17'b00000000001000000; tag_o = (lg_inputs_p) ' (6); end
+    22'b01101_000??????10000000: begin sel_one_hot_n= 17'b00000000010000000; tag_o = (lg_inputs_p) ' (7); end
+    22'b01101_000?????100000000: begin sel_one_hot_n= 17'b00000000100000000; tag_o = (lg_inputs_p) ' (8); end
+    22'b01101_000????1000000000: begin sel_one_hot_n= 17'b00000001000000000; tag_o = (lg_inputs_p) ' (9); end
+    22'b01101_000???10000000000: begin sel_one_hot_n= 17'b00000010000000000; tag_o = (lg_inputs_p) ' (10); end
+    22'b01101_000??100000000000: begin sel_one_hot_n= 17'b00000100000000000; tag_o = (lg_inputs_p) ' (11); end
+    22'b01101_000?1000000000000: begin sel_one_hot_n= 17'b00001000000000000; tag_o = (lg_inputs_p) ' (12); end
+    22'b01101_00010000000000000: begin sel_one_hot_n= 17'b00010000000000000; tag_o = (lg_inputs_p) ' (13); end
+    22'b01110_?1???????????????: begin sel_one_hot_n= 17'b01000000000000000; tag_o = (lg_inputs_p) ' (15); end
+    22'b01110_10???????????????: begin sel_one_hot_n= 17'b10000000000000000; tag_o = (lg_inputs_p) ' (16); end
+    22'b01110_00??????????????1: begin sel_one_hot_n= 17'b00000000000000001; tag_o = (lg_inputs_p) ' (0); end
+    22'b01110_00?????????????10: begin sel_one_hot_n= 17'b00000000000000010; tag_o = (lg_inputs_p) ' (1); end
+    22'b01110_00????????????100: begin sel_one_hot_n= 17'b00000000000000100; tag_o = (lg_inputs_p) ' (2); end
+    22'b01110_00???????????1000: begin sel_one_hot_n= 17'b00000000000001000; tag_o = (lg_inputs_p) ' (3); end
+    22'b01110_00??????????10000: begin sel_one_hot_n= 17'b00000000000010000; tag_o = (lg_inputs_p) ' (4); end
+    22'b01110_00?????????100000: begin sel_one_hot_n= 17'b00000000000100000; tag_o = (lg_inputs_p) ' (5); end
+    22'b01110_00????????1000000: begin sel_one_hot_n= 17'b00000000001000000; tag_o = (lg_inputs_p) ' (6); end
+    22'b01110_00???????10000000: begin sel_one_hot_n= 17'b00000000010000000; tag_o = (lg_inputs_p) ' (7); end
+    22'b01110_00??????100000000: begin sel_one_hot_n= 17'b00000000100000000; tag_o = (lg_inputs_p) ' (8); end
+    22'b01110_00?????1000000000: begin sel_one_hot_n= 17'b00000001000000000; tag_o = (lg_inputs_p) ' (9); end
+    22'b01110_00????10000000000: begin sel_one_hot_n= 17'b00000010000000000; tag_o = (lg_inputs_p) ' (10); end
+    22'b01110_00???100000000000: begin sel_one_hot_n= 17'b00000100000000000; tag_o = (lg_inputs_p) ' (11); end
+    22'b01110_00??1000000000000: begin sel_one_hot_n= 17'b00001000000000000; tag_o = (lg_inputs_p) ' (12); end
+    22'b01110_00?10000000000000: begin sel_one_hot_n= 17'b00010000000000000; tag_o = (lg_inputs_p) ' (13); end
+    22'b01110_00100000000000000: begin sel_one_hot_n= 17'b00100000000000000; tag_o = (lg_inputs_p) ' (14); end
+    22'b01111_1????????????????: begin sel_one_hot_n= 17'b10000000000000000; tag_o = (lg_inputs_p) ' (16); end
+    22'b01111_0???????????????1: begin sel_one_hot_n= 17'b00000000000000001; tag_o = (lg_inputs_p) ' (0); end
+    22'b01111_0??????????????10: begin sel_one_hot_n= 17'b00000000000000010; tag_o = (lg_inputs_p) ' (1); end
+    22'b01111_0?????????????100: begin sel_one_hot_n= 17'b00000000000000100; tag_o = (lg_inputs_p) ' (2); end
+    22'b01111_0????????????1000: begin sel_one_hot_n= 17'b00000000000001000; tag_o = (lg_inputs_p) ' (3); end
+    22'b01111_0???????????10000: begin sel_one_hot_n= 17'b00000000000010000; tag_o = (lg_inputs_p) ' (4); end
+    22'b01111_0??????????100000: begin sel_one_hot_n= 17'b00000000000100000; tag_o = (lg_inputs_p) ' (5); end
+    22'b01111_0?????????1000000: begin sel_one_hot_n= 17'b00000000001000000; tag_o = (lg_inputs_p) ' (6); end
+    22'b01111_0????????10000000: begin sel_one_hot_n= 17'b00000000010000000; tag_o = (lg_inputs_p) ' (7); end
+    22'b01111_0???????100000000: begin sel_one_hot_n= 17'b00000000100000000; tag_o = (lg_inputs_p) ' (8); end
+    22'b01111_0??????1000000000: begin sel_one_hot_n= 17'b00000001000000000; tag_o = (lg_inputs_p) ' (9); end
+    22'b01111_0?????10000000000: begin sel_one_hot_n= 17'b00000010000000000; tag_o = (lg_inputs_p) ' (10); end
+    22'b01111_0????100000000000: begin sel_one_hot_n= 17'b00000100000000000; tag_o = (lg_inputs_p) ' (11); end
+    22'b01111_0???1000000000000: begin sel_one_hot_n= 17'b00001000000000000; tag_o = (lg_inputs_p) ' (12); end
+    22'b01111_0??10000000000000: begin sel_one_hot_n= 17'b00010000000000000; tag_o = (lg_inputs_p) ' (13); end
+    22'b01111_0?100000000000000: begin sel_one_hot_n= 17'b00100000000000000; tag_o = (lg_inputs_p) ' (14); end
+    22'b01111_01000000000000000: begin sel_one_hot_n= 17'b01000000000000000; tag_o = (lg_inputs_p) ' (15); end
+    22'b10000_????????????????1: begin sel_one_hot_n= 17'b00000000000000001; tag_o = (lg_inputs_p) ' (0); end
+    22'b10000_???????????????10: begin sel_one_hot_n= 17'b00000000000000010; tag_o = (lg_inputs_p) ' (1); end
+    22'b10000_??????????????100: begin sel_one_hot_n= 17'b00000000000000100; tag_o = (lg_inputs_p) ' (2); end
+    22'b10000_?????????????1000: begin sel_one_hot_n= 17'b00000000000001000; tag_o = (lg_inputs_p) ' (3); end
+    22'b10000_????????????10000: begin sel_one_hot_n= 17'b00000000000010000; tag_o = (lg_inputs_p) ' (4); end
+    22'b10000_???????????100000: begin sel_one_hot_n= 17'b00000000000100000; tag_o = (lg_inputs_p) ' (5); end
+    22'b10000_??????????1000000: begin sel_one_hot_n= 17'b00000000001000000; tag_o = (lg_inputs_p) ' (6); end
+    22'b10000_?????????10000000: begin sel_one_hot_n= 17'b00000000010000000; tag_o = (lg_inputs_p) ' (7); end
+    22'b10000_????????100000000: begin sel_one_hot_n= 17'b00000000100000000; tag_o = (lg_inputs_p) ' (8); end
+    22'b10000_???????1000000000: begin sel_one_hot_n= 17'b00000001000000000; tag_o = (lg_inputs_p) ' (9); end
+    22'b10000_??????10000000000: begin sel_one_hot_n= 17'b00000010000000000; tag_o = (lg_inputs_p) ' (10); end
+    22'b10000_?????100000000000: begin sel_one_hot_n= 17'b00000100000000000; tag_o = (lg_inputs_p) ' (11); end
+    22'b10000_????1000000000000: begin sel_one_hot_n= 17'b00001000000000000; tag_o = (lg_inputs_p) ' (12); end
+    22'b10000_???10000000000000: begin sel_one_hot_n= 17'b00010000000000000; tag_o = (lg_inputs_p) ' (13); end
+    22'b10000_??100000000000000: begin sel_one_hot_n= 17'b00100000000000000; tag_o = (lg_inputs_p) ' (14); end
+    22'b10000_?1000000000000000: begin sel_one_hot_n= 17'b01000000000000000; tag_o = (lg_inputs_p) ' (15); end
+    22'b10000_10000000000000000: begin sel_one_hot_n= 17'b10000000000000000; tag_o = (lg_inputs_p) ' (16); end
+    default: begin sel_one_hot_n= {17{1'bx}}; tag_o = (lg_inputs_p) ' (0); end // X 
+  endcase
+end 
+
+assign sel_one_hot_o = sel_one_hot_n;
+assign grants_o      = sel_one_hot_n & {17{grants_en_i}} ;   
+    
+
+if ( hold_on_sr_p ) begin 
+   
+    always_comb begin
+        unique casez( last_r )
+           5'b00000 : hold_on_sr = ( reqs_i == 17'b01000000000000000 );
+           5'b00001 : hold_on_sr = ( reqs_i == 17'b00100000000000000 );
+           5'b00010 : hold_on_sr = ( reqs_i == 17'b00010000000000000 );
+           5'b00011 : hold_on_sr = ( reqs_i == 17'b00001000000000000 );
+           5'b00100 : hold_on_sr = ( reqs_i == 17'b00000100000000000 );
+           5'b00101 : hold_on_sr = ( reqs_i == 17'b00000010000000000 );
+           5'b00110 : hold_on_sr = ( reqs_i == 17'b00000001000000000 );
+           5'b00111 : hold_on_sr = ( reqs_i == 17'b00000000100000000 );
+           5'b01000 : hold_on_sr = ( reqs_i == 17'b00000000010000000 );
+           5'b01001 : hold_on_sr = ( reqs_i == 17'b00000000001000000 );
+           5'b01010 : hold_on_sr = ( reqs_i == 17'b00000000000100000 );
+           5'b01011 : hold_on_sr = ( reqs_i == 17'b00000000000010000 );
+           5'b01100 : hold_on_sr = ( reqs_i == 17'b00000000000001000 );
+           5'b01101 : hold_on_sr = ( reqs_i == 17'b00000000000000100 );
+           5'b01110 : hold_on_sr = ( reqs_i == 17'b00000000000000010 );
+           5'b01111 : hold_on_sr = ( reqs_i == 17'b00000000000000001 );
+           5'b10000 : hold_on_sr = ( reqs_i == 17'b10000000000000000 );
+           default : hold_on_sr = 1'b0;
+       endcase
+    end //end of always_comb
+
+end else begin:not_hold_on_sr_p
+    assign hold_on_sr = '0;
+end //end of hold_on_sr_p 
+
+if ( reset_on_sr_p ) begin:reset_on_17 
+    assign reset_on_sr = ( reqs_i == 17'b01000000000000000 ) 
+                       | ( reqs_i == 17'b00100000000000000 ) 
+                       | ( reqs_i == 17'b00010000000000000 ) 
+                       | ( reqs_i == 17'b00001000000000000 ) 
+                       | ( reqs_i == 17'b00000100000000000 ) 
+                       | ( reqs_i == 17'b00000010000000000 ) 
+                       | ( reqs_i == 17'b00000001000000000 ) 
+                       | ( reqs_i == 17'b00000000100000000 ) 
+                       | ( reqs_i == 17'b00000000010000000 ) 
+                       | ( reqs_i == 17'b00000000001000000 ) 
+                       | ( reqs_i == 17'b00000000000100000 ) 
+                       | ( reqs_i == 17'b00000000000010000 ) 
+                       | ( reqs_i == 17'b00000000000001000 ) 
+                       | ( reqs_i == 17'b00000000000000100 ) 
+                       | ( reqs_i == 17'b00000000000000010 ) 
+                       | ( reqs_i == 17'b00000000000000001 ) 
+                       | ( reqs_i == 17'b10000000000000000 ) 
+                       ;
+
+end else begin:not_reset_on_sr_p
+    assign reset_on_sr = '0;
+end //end of reset_on_sr_p 
+
+end: inputs_17
+
+if(inputs_p == 18)
+begin: inputs_18
+
+logic [18-1: 0 ] sel_one_hot_n;
+
+always_comb
+begin
+  unique casez({last_r, reqs_i})
+    23'b?????_000000000000000000: begin sel_one_hot_n = 18'b000000000000000000; tag_o = (lg_inputs_p) ' (0); end // X
+    23'b00000_????????????????1?: begin sel_one_hot_n= 18'b000000000000000010; tag_o = (lg_inputs_p) ' (1); end
+    23'b00000_???????????????10?: begin sel_one_hot_n= 18'b000000000000000100; tag_o = (lg_inputs_p) ' (2); end
+    23'b00000_??????????????100?: begin sel_one_hot_n= 18'b000000000000001000; tag_o = (lg_inputs_p) ' (3); end
+    23'b00000_?????????????1000?: begin sel_one_hot_n= 18'b000000000000010000; tag_o = (lg_inputs_p) ' (4); end
+    23'b00000_????????????10000?: begin sel_one_hot_n= 18'b000000000000100000; tag_o = (lg_inputs_p) ' (5); end
+    23'b00000_???????????100000?: begin sel_one_hot_n= 18'b000000000001000000; tag_o = (lg_inputs_p) ' (6); end
+    23'b00000_??????????1000000?: begin sel_one_hot_n= 18'b000000000010000000; tag_o = (lg_inputs_p) ' (7); end
+    23'b00000_?????????10000000?: begin sel_one_hot_n= 18'b000000000100000000; tag_o = (lg_inputs_p) ' (8); end
+    23'b00000_????????100000000?: begin sel_one_hot_n= 18'b000000001000000000; tag_o = (lg_inputs_p) ' (9); end
+    23'b00000_???????1000000000?: begin sel_one_hot_n= 18'b000000010000000000; tag_o = (lg_inputs_p) ' (10); end
+    23'b00000_??????10000000000?: begin sel_one_hot_n= 18'b000000100000000000; tag_o = (lg_inputs_p) ' (11); end
+    23'b00000_?????100000000000?: begin sel_one_hot_n= 18'b000001000000000000; tag_o = (lg_inputs_p) ' (12); end
+    23'b00000_????1000000000000?: begin sel_one_hot_n= 18'b000010000000000000; tag_o = (lg_inputs_p) ' (13); end
+    23'b00000_???10000000000000?: begin sel_one_hot_n= 18'b000100000000000000; tag_o = (lg_inputs_p) ' (14); end
+    23'b00000_??100000000000000?: begin sel_one_hot_n= 18'b001000000000000000; tag_o = (lg_inputs_p) ' (15); end
+    23'b00000_?1000000000000000?: begin sel_one_hot_n= 18'b010000000000000000; tag_o = (lg_inputs_p) ' (16); end
+    23'b00000_10000000000000000?: begin sel_one_hot_n= 18'b100000000000000000; tag_o = (lg_inputs_p) ' (17); end
+    23'b00000_000000000000000001: begin sel_one_hot_n= 18'b000000000000000001; tag_o = (lg_inputs_p) ' (0); end
+    23'b00001_???????????????1??: begin sel_one_hot_n= 18'b000000000000000100; tag_o = (lg_inputs_p) ' (2); end
+    23'b00001_??????????????10??: begin sel_one_hot_n= 18'b000000000000001000; tag_o = (lg_inputs_p) ' (3); end
+    23'b00001_?????????????100??: begin sel_one_hot_n= 18'b000000000000010000; tag_o = (lg_inputs_p) ' (4); end
+    23'b00001_????????????1000??: begin sel_one_hot_n= 18'b000000000000100000; tag_o = (lg_inputs_p) ' (5); end
+    23'b00001_???????????10000??: begin sel_one_hot_n= 18'b000000000001000000; tag_o = (lg_inputs_p) ' (6); end
+    23'b00001_??????????100000??: begin sel_one_hot_n= 18'b000000000010000000; tag_o = (lg_inputs_p) ' (7); end
+    23'b00001_?????????1000000??: begin sel_one_hot_n= 18'b000000000100000000; tag_o = (lg_inputs_p) ' (8); end
+    23'b00001_????????10000000??: begin sel_one_hot_n= 18'b000000001000000000; tag_o = (lg_inputs_p) ' (9); end
+    23'b00001_???????100000000??: begin sel_one_hot_n= 18'b000000010000000000; tag_o = (lg_inputs_p) ' (10); end
+    23'b00001_??????1000000000??: begin sel_one_hot_n= 18'b000000100000000000; tag_o = (lg_inputs_p) ' (11); end
+    23'b00001_?????10000000000??: begin sel_one_hot_n= 18'b000001000000000000; tag_o = (lg_inputs_p) ' (12); end
+    23'b00001_????100000000000??: begin sel_one_hot_n= 18'b000010000000000000; tag_o = (lg_inputs_p) ' (13); end
+    23'b00001_???1000000000000??: begin sel_one_hot_n= 18'b000100000000000000; tag_o = (lg_inputs_p) ' (14); end
+    23'b00001_??10000000000000??: begin sel_one_hot_n= 18'b001000000000000000; tag_o = (lg_inputs_p) ' (15); end
+    23'b00001_?100000000000000??: begin sel_one_hot_n= 18'b010000000000000000; tag_o = (lg_inputs_p) ' (16); end
+    23'b00001_1000000000000000??: begin sel_one_hot_n= 18'b100000000000000000; tag_o = (lg_inputs_p) ' (17); end
+    23'b00001_0000000000000000?1: begin sel_one_hot_n= 18'b000000000000000001; tag_o = (lg_inputs_p) ' (0); end
+    23'b00001_000000000000000010: begin sel_one_hot_n= 18'b000000000000000010; tag_o = (lg_inputs_p) ' (1); end
+    23'b00010_??????????????1???: begin sel_one_hot_n= 18'b000000000000001000; tag_o = (lg_inputs_p) ' (3); end
+    23'b00010_?????????????10???: begin sel_one_hot_n= 18'b000000000000010000; tag_o = (lg_inputs_p) ' (4); end
+    23'b00010_????????????100???: begin sel_one_hot_n= 18'b000000000000100000; tag_o = (lg_inputs_p) ' (5); end
+    23'b00010_???????????1000???: begin sel_one_hot_n= 18'b000000000001000000; tag_o = (lg_inputs_p) ' (6); end
+    23'b00010_??????????10000???: begin sel_one_hot_n= 18'b000000000010000000; tag_o = (lg_inputs_p) ' (7); end
+    23'b00010_?????????100000???: begin sel_one_hot_n= 18'b000000000100000000; tag_o = (lg_inputs_p) ' (8); end
+    23'b00010_????????1000000???: begin sel_one_hot_n= 18'b000000001000000000; tag_o = (lg_inputs_p) ' (9); end
+    23'b00010_???????10000000???: begin sel_one_hot_n= 18'b000000010000000000; tag_o = (lg_inputs_p) ' (10); end
+    23'b00010_??????100000000???: begin sel_one_hot_n= 18'b000000100000000000; tag_o = (lg_inputs_p) ' (11); end
+    23'b00010_?????1000000000???: begin sel_one_hot_n= 18'b000001000000000000; tag_o = (lg_inputs_p) ' (12); end
+    23'b00010_????10000000000???: begin sel_one_hot_n= 18'b000010000000000000; tag_o = (lg_inputs_p) ' (13); end
+    23'b00010_???100000000000???: begin sel_one_hot_n= 18'b000100000000000000; tag_o = (lg_inputs_p) ' (14); end
+    23'b00010_??1000000000000???: begin sel_one_hot_n= 18'b001000000000000000; tag_o = (lg_inputs_p) ' (15); end
+    23'b00010_?10000000000000???: begin sel_one_hot_n= 18'b010000000000000000; tag_o = (lg_inputs_p) ' (16); end
+    23'b00010_100000000000000???: begin sel_one_hot_n= 18'b100000000000000000; tag_o = (lg_inputs_p) ' (17); end
+    23'b00010_000000000000000??1: begin sel_one_hot_n= 18'b000000000000000001; tag_o = (lg_inputs_p) ' (0); end
+    23'b00010_000000000000000?10: begin sel_one_hot_n= 18'b000000000000000010; tag_o = (lg_inputs_p) ' (1); end
+    23'b00010_000000000000000100: begin sel_one_hot_n= 18'b000000000000000100; tag_o = (lg_inputs_p) ' (2); end
+    23'b00011_?????????????1????: begin sel_one_hot_n= 18'b000000000000010000; tag_o = (lg_inputs_p) ' (4); end
+    23'b00011_????????????10????: begin sel_one_hot_n= 18'b000000000000100000; tag_o = (lg_inputs_p) ' (5); end
+    23'b00011_???????????100????: begin sel_one_hot_n= 18'b000000000001000000; tag_o = (lg_inputs_p) ' (6); end
+    23'b00011_??????????1000????: begin sel_one_hot_n= 18'b000000000010000000; tag_o = (lg_inputs_p) ' (7); end
+    23'b00011_?????????10000????: begin sel_one_hot_n= 18'b000000000100000000; tag_o = (lg_inputs_p) ' (8); end
+    23'b00011_????????100000????: begin sel_one_hot_n= 18'b000000001000000000; tag_o = (lg_inputs_p) ' (9); end
+    23'b00011_???????1000000????: begin sel_one_hot_n= 18'b000000010000000000; tag_o = (lg_inputs_p) ' (10); end
+    23'b00011_??????10000000????: begin sel_one_hot_n= 18'b000000100000000000; tag_o = (lg_inputs_p) ' (11); end
+    23'b00011_?????100000000????: begin sel_one_hot_n= 18'b000001000000000000; tag_o = (lg_inputs_p) ' (12); end
+    23'b00011_????1000000000????: begin sel_one_hot_n= 18'b000010000000000000; tag_o = (lg_inputs_p) ' (13); end
+    23'b00011_???10000000000????: begin sel_one_hot_n= 18'b000100000000000000; tag_o = (lg_inputs_p) ' (14); end
+    23'b00011_??100000000000????: begin sel_one_hot_n= 18'b001000000000000000; tag_o = (lg_inputs_p) ' (15); end
+    23'b00011_?1000000000000????: begin sel_one_hot_n= 18'b010000000000000000; tag_o = (lg_inputs_p) ' (16); end
+    23'b00011_10000000000000????: begin sel_one_hot_n= 18'b100000000000000000; tag_o = (lg_inputs_p) ' (17); end
+    23'b00011_00000000000000???1: begin sel_one_hot_n= 18'b000000000000000001; tag_o = (lg_inputs_p) ' (0); end
+    23'b00011_00000000000000??10: begin sel_one_hot_n= 18'b000000000000000010; tag_o = (lg_inputs_p) ' (1); end
+    23'b00011_00000000000000?100: begin sel_one_hot_n= 18'b000000000000000100; tag_o = (lg_inputs_p) ' (2); end
+    23'b00011_000000000000001000: begin sel_one_hot_n= 18'b000000000000001000; tag_o = (lg_inputs_p) ' (3); end
+    23'b00100_????????????1?????: begin sel_one_hot_n= 18'b000000000000100000; tag_o = (lg_inputs_p) ' (5); end
+    23'b00100_???????????10?????: begin sel_one_hot_n= 18'b000000000001000000; tag_o = (lg_inputs_p) ' (6); end
+    23'b00100_??????????100?????: begin sel_one_hot_n= 18'b000000000010000000; tag_o = (lg_inputs_p) ' (7); end
+    23'b00100_?????????1000?????: begin sel_one_hot_n= 18'b000000000100000000; tag_o = (lg_inputs_p) ' (8); end
+    23'b00100_????????10000?????: begin sel_one_hot_n= 18'b000000001000000000; tag_o = (lg_inputs_p) ' (9); end
+    23'b00100_???????100000?????: begin sel_one_hot_n= 18'b000000010000000000; tag_o = (lg_inputs_p) ' (10); end
+    23'b00100_??????1000000?????: begin sel_one_hot_n= 18'b000000100000000000; tag_o = (lg_inputs_p) ' (11); end
+    23'b00100_?????10000000?????: begin sel_one_hot_n= 18'b000001000000000000; tag_o = (lg_inputs_p) ' (12); end
+    23'b00100_????100000000?????: begin sel_one_hot_n= 18'b000010000000000000; tag_o = (lg_inputs_p) ' (13); end
+    23'b00100_???1000000000?????: begin sel_one_hot_n= 18'b000100000000000000; tag_o = (lg_inputs_p) ' (14); end
+    23'b00100_??10000000000?????: begin sel_one_hot_n= 18'b001000000000000000; tag_o = (lg_inputs_p) ' (15); end
+    23'b00100_?100000000000?????: begin sel_one_hot_n= 18'b010000000000000000; tag_o = (lg_inputs_p) ' (16); end
+    23'b00100_1000000000000?????: begin sel_one_hot_n= 18'b100000000000000000; tag_o = (lg_inputs_p) ' (17); end
+    23'b00100_0000000000000????1: begin sel_one_hot_n= 18'b000000000000000001; tag_o = (lg_inputs_p) ' (0); end
+    23'b00100_0000000000000???10: begin sel_one_hot_n= 18'b000000000000000010; tag_o = (lg_inputs_p) ' (1); end
+    23'b00100_0000000000000??100: begin sel_one_hot_n= 18'b000000000000000100; tag_o = (lg_inputs_p) ' (2); end
+    23'b00100_0000000000000?1000: begin sel_one_hot_n= 18'b000000000000001000; tag_o = (lg_inputs_p) ' (3); end
+    23'b00100_000000000000010000: begin sel_one_hot_n= 18'b000000000000010000; tag_o = (lg_inputs_p) ' (4); end
+    23'b00101_???????????1??????: begin sel_one_hot_n= 18'b000000000001000000; tag_o = (lg_inputs_p) ' (6); end
+    23'b00101_??????????10??????: begin sel_one_hot_n= 18'b000000000010000000; tag_o = (lg_inputs_p) ' (7); end
+    23'b00101_?????????100??????: begin sel_one_hot_n= 18'b000000000100000000; tag_o = (lg_inputs_p) ' (8); end
+    23'b00101_????????1000??????: begin sel_one_hot_n= 18'b000000001000000000; tag_o = (lg_inputs_p) ' (9); end
+    23'b00101_???????10000??????: begin sel_one_hot_n= 18'b000000010000000000; tag_o = (lg_inputs_p) ' (10); end
+    23'b00101_??????100000??????: begin sel_one_hot_n= 18'b000000100000000000; tag_o = (lg_inputs_p) ' (11); end
+    23'b00101_?????1000000??????: begin sel_one_hot_n= 18'b000001000000000000; tag_o = (lg_inputs_p) ' (12); end
+    23'b00101_????10000000??????: begin sel_one_hot_n= 18'b000010000000000000; tag_o = (lg_inputs_p) ' (13); end
+    23'b00101_???100000000??????: begin sel_one_hot_n= 18'b000100000000000000; tag_o = (lg_inputs_p) ' (14); end
+    23'b00101_??1000000000??????: begin sel_one_hot_n= 18'b001000000000000000; tag_o = (lg_inputs_p) ' (15); end
+    23'b00101_?10000000000??????: begin sel_one_hot_n= 18'b010000000000000000; tag_o = (lg_inputs_p) ' (16); end
+    23'b00101_100000000000??????: begin sel_one_hot_n= 18'b100000000000000000; tag_o = (lg_inputs_p) ' (17); end
+    23'b00101_000000000000?????1: begin sel_one_hot_n= 18'b000000000000000001; tag_o = (lg_inputs_p) ' (0); end
+    23'b00101_000000000000????10: begin sel_one_hot_n= 18'b000000000000000010; tag_o = (lg_inputs_p) ' (1); end
+    23'b00101_000000000000???100: begin sel_one_hot_n= 18'b000000000000000100; tag_o = (lg_inputs_p) ' (2); end
+    23'b00101_000000000000??1000: begin sel_one_hot_n= 18'b000000000000001000; tag_o = (lg_inputs_p) ' (3); end
+    23'b00101_000000000000?10000: begin sel_one_hot_n= 18'b000000000000010000; tag_o = (lg_inputs_p) ' (4); end
+    23'b00101_000000000000100000: begin sel_one_hot_n= 18'b000000000000100000; tag_o = (lg_inputs_p) ' (5); end
+    23'b00110_??????????1???????: begin sel_one_hot_n= 18'b000000000010000000; tag_o = (lg_inputs_p) ' (7); end
+    23'b00110_?????????10???????: begin sel_one_hot_n= 18'b000000000100000000; tag_o = (lg_inputs_p) ' (8); end
+    23'b00110_????????100???????: begin sel_one_hot_n= 18'b000000001000000000; tag_o = (lg_inputs_p) ' (9); end
+    23'b00110_???????1000???????: begin sel_one_hot_n= 18'b000000010000000000; tag_o = (lg_inputs_p) ' (10); end
+    23'b00110_??????10000???????: begin sel_one_hot_n= 18'b000000100000000000; tag_o = (lg_inputs_p) ' (11); end
+    23'b00110_?????100000???????: begin sel_one_hot_n= 18'b000001000000000000; tag_o = (lg_inputs_p) ' (12); end
+    23'b00110_????1000000???????: begin sel_one_hot_n= 18'b000010000000000000; tag_o = (lg_inputs_p) ' (13); end
+    23'b00110_???10000000???????: begin sel_one_hot_n= 18'b000100000000000000; tag_o = (lg_inputs_p) ' (14); end
+    23'b00110_??100000000???????: begin sel_one_hot_n= 18'b001000000000000000; tag_o = (lg_inputs_p) ' (15); end
+    23'b00110_?1000000000???????: begin sel_one_hot_n= 18'b010000000000000000; tag_o = (lg_inputs_p) ' (16); end
+    23'b00110_10000000000???????: begin sel_one_hot_n= 18'b100000000000000000; tag_o = (lg_inputs_p) ' (17); end
+    23'b00110_00000000000??????1: begin sel_one_hot_n= 18'b000000000000000001; tag_o = (lg_inputs_p) ' (0); end
+    23'b00110_00000000000?????10: begin sel_one_hot_n= 18'b000000000000000010; tag_o = (lg_inputs_p) ' (1); end
+    23'b00110_00000000000????100: begin sel_one_hot_n= 18'b000000000000000100; tag_o = (lg_inputs_p) ' (2); end
+    23'b00110_00000000000???1000: begin sel_one_hot_n= 18'b000000000000001000; tag_o = (lg_inputs_p) ' (3); end
+    23'b00110_00000000000??10000: begin sel_one_hot_n= 18'b000000000000010000; tag_o = (lg_inputs_p) ' (4); end
+    23'b00110_00000000000?100000: begin sel_one_hot_n= 18'b000000000000100000; tag_o = (lg_inputs_p) ' (5); end
+    23'b00110_000000000001000000: begin sel_one_hot_n= 18'b000000000001000000; tag_o = (lg_inputs_p) ' (6); end
+    23'b00111_?????????1????????: begin sel_one_hot_n= 18'b000000000100000000; tag_o = (lg_inputs_p) ' (8); end
+    23'b00111_????????10????????: begin sel_one_hot_n= 18'b000000001000000000; tag_o = (lg_inputs_p) ' (9); end
+    23'b00111_???????100????????: begin sel_one_hot_n= 18'b000000010000000000; tag_o = (lg_inputs_p) ' (10); end
+    23'b00111_??????1000????????: begin sel_one_hot_n= 18'b000000100000000000; tag_o = (lg_inputs_p) ' (11); end
+    23'b00111_?????10000????????: begin sel_one_hot_n= 18'b000001000000000000; tag_o = (lg_inputs_p) ' (12); end
+    23'b00111_????100000????????: begin sel_one_hot_n= 18'b000010000000000000; tag_o = (lg_inputs_p) ' (13); end
+    23'b00111_???1000000????????: begin sel_one_hot_n= 18'b000100000000000000; tag_o = (lg_inputs_p) ' (14); end
+    23'b00111_??10000000????????: begin sel_one_hot_n= 18'b001000000000000000; tag_o = (lg_inputs_p) ' (15); end
+    23'b00111_?100000000????????: begin sel_one_hot_n= 18'b010000000000000000; tag_o = (lg_inputs_p) ' (16); end
+    23'b00111_1000000000????????: begin sel_one_hot_n= 18'b100000000000000000; tag_o = (lg_inputs_p) ' (17); end
+    23'b00111_0000000000???????1: begin sel_one_hot_n= 18'b000000000000000001; tag_o = (lg_inputs_p) ' (0); end
+    23'b00111_0000000000??????10: begin sel_one_hot_n= 18'b000000000000000010; tag_o = (lg_inputs_p) ' (1); end
+    23'b00111_0000000000?????100: begin sel_one_hot_n= 18'b000000000000000100; tag_o = (lg_inputs_p) ' (2); end
+    23'b00111_0000000000????1000: begin sel_one_hot_n= 18'b000000000000001000; tag_o = (lg_inputs_p) ' (3); end
+    23'b00111_0000000000???10000: begin sel_one_hot_n= 18'b000000000000010000; tag_o = (lg_inputs_p) ' (4); end
+    23'b00111_0000000000??100000: begin sel_one_hot_n= 18'b000000000000100000; tag_o = (lg_inputs_p) ' (5); end
+    23'b00111_0000000000?1000000: begin sel_one_hot_n= 18'b000000000001000000; tag_o = (lg_inputs_p) ' (6); end
+    23'b00111_000000000010000000: begin sel_one_hot_n= 18'b000000000010000000; tag_o = (lg_inputs_p) ' (7); end
+    23'b01000_????????1?????????: begin sel_one_hot_n= 18'b000000001000000000; tag_o = (lg_inputs_p) ' (9); end
+    23'b01000_???????10?????????: begin sel_one_hot_n= 18'b000000010000000000; tag_o = (lg_inputs_p) ' (10); end
+    23'b01000_??????100?????????: begin sel_one_hot_n= 18'b000000100000000000; tag_o = (lg_inputs_p) ' (11); end
+    23'b01000_?????1000?????????: begin sel_one_hot_n= 18'b000001000000000000; tag_o = (lg_inputs_p) ' (12); end
+    23'b01000_????10000?????????: begin sel_one_hot_n= 18'b000010000000000000; tag_o = (lg_inputs_p) ' (13); end
+    23'b01000_???100000?????????: begin sel_one_hot_n= 18'b000100000000000000; tag_o = (lg_inputs_p) ' (14); end
+    23'b01000_??1000000?????????: begin sel_one_hot_n= 18'b001000000000000000; tag_o = (lg_inputs_p) ' (15); end
+    23'b01000_?10000000?????????: begin sel_one_hot_n= 18'b010000000000000000; tag_o = (lg_inputs_p) ' (16); end
+    23'b01000_100000000?????????: begin sel_one_hot_n= 18'b100000000000000000; tag_o = (lg_inputs_p) ' (17); end
+    23'b01000_000000000????????1: begin sel_one_hot_n= 18'b000000000000000001; tag_o = (lg_inputs_p) ' (0); end
+    23'b01000_000000000???????10: begin sel_one_hot_n= 18'b000000000000000010; tag_o = (lg_inputs_p) ' (1); end
+    23'b01000_000000000??????100: begin sel_one_hot_n= 18'b000000000000000100; tag_o = (lg_inputs_p) ' (2); end
+    23'b01000_000000000?????1000: begin sel_one_hot_n= 18'b000000000000001000; tag_o = (lg_inputs_p) ' (3); end
+    23'b01000_000000000????10000: begin sel_one_hot_n= 18'b000000000000010000; tag_o = (lg_inputs_p) ' (4); end
+    23'b01000_000000000???100000: begin sel_one_hot_n= 18'b000000000000100000; tag_o = (lg_inputs_p) ' (5); end
+    23'b01000_000000000??1000000: begin sel_one_hot_n= 18'b000000000001000000; tag_o = (lg_inputs_p) ' (6); end
+    23'b01000_000000000?10000000: begin sel_one_hot_n= 18'b000000000010000000; tag_o = (lg_inputs_p) ' (7); end
+    23'b01000_000000000100000000: begin sel_one_hot_n= 18'b000000000100000000; tag_o = (lg_inputs_p) ' (8); end
+    23'b01001_???????1??????????: begin sel_one_hot_n= 18'b000000010000000000; tag_o = (lg_inputs_p) ' (10); end
+    23'b01001_??????10??????????: begin sel_one_hot_n= 18'b000000100000000000; tag_o = (lg_inputs_p) ' (11); end
+    23'b01001_?????100??????????: begin sel_one_hot_n= 18'b000001000000000000; tag_o = (lg_inputs_p) ' (12); end
+    23'b01001_????1000??????????: begin sel_one_hot_n= 18'b000010000000000000; tag_o = (lg_inputs_p) ' (13); end
+    23'b01001_???10000??????????: begin sel_one_hot_n= 18'b000100000000000000; tag_o = (lg_inputs_p) ' (14); end
+    23'b01001_??100000??????????: begin sel_one_hot_n= 18'b001000000000000000; tag_o = (lg_inputs_p) ' (15); end
+    23'b01001_?1000000??????????: begin sel_one_hot_n= 18'b010000000000000000; tag_o = (lg_inputs_p) ' (16); end
+    23'b01001_10000000??????????: begin sel_one_hot_n= 18'b100000000000000000; tag_o = (lg_inputs_p) ' (17); end
+    23'b01001_00000000?????????1: begin sel_one_hot_n= 18'b000000000000000001; tag_o = (lg_inputs_p) ' (0); end
+    23'b01001_00000000????????10: begin sel_one_hot_n= 18'b000000000000000010; tag_o = (lg_inputs_p) ' (1); end
+    23'b01001_00000000???????100: begin sel_one_hot_n= 18'b000000000000000100; tag_o = (lg_inputs_p) ' (2); end
+    23'b01001_00000000??????1000: begin sel_one_hot_n= 18'b000000000000001000; tag_o = (lg_inputs_p) ' (3); end
+    23'b01001_00000000?????10000: begin sel_one_hot_n= 18'b000000000000010000; tag_o = (lg_inputs_p) ' (4); end
+    23'b01001_00000000????100000: begin sel_one_hot_n= 18'b000000000000100000; tag_o = (lg_inputs_p) ' (5); end
+    23'b01001_00000000???1000000: begin sel_one_hot_n= 18'b000000000001000000; tag_o = (lg_inputs_p) ' (6); end
+    23'b01001_00000000??10000000: begin sel_one_hot_n= 18'b000000000010000000; tag_o = (lg_inputs_p) ' (7); end
+    23'b01001_00000000?100000000: begin sel_one_hot_n= 18'b000000000100000000; tag_o = (lg_inputs_p) ' (8); end
+    23'b01001_000000001000000000: begin sel_one_hot_n= 18'b000000001000000000; tag_o = (lg_inputs_p) ' (9); end
+    23'b01010_??????1???????????: begin sel_one_hot_n= 18'b000000100000000000; tag_o = (lg_inputs_p) ' (11); end
+    23'b01010_?????10???????????: begin sel_one_hot_n= 18'b000001000000000000; tag_o = (lg_inputs_p) ' (12); end
+    23'b01010_????100???????????: begin sel_one_hot_n= 18'b000010000000000000; tag_o = (lg_inputs_p) ' (13); end
+    23'b01010_???1000???????????: begin sel_one_hot_n= 18'b000100000000000000; tag_o = (lg_inputs_p) ' (14); end
+    23'b01010_??10000???????????: begin sel_one_hot_n= 18'b001000000000000000; tag_o = (lg_inputs_p) ' (15); end
+    23'b01010_?100000???????????: begin sel_one_hot_n= 18'b010000000000000000; tag_o = (lg_inputs_p) ' (16); end
+    23'b01010_1000000???????????: begin sel_one_hot_n= 18'b100000000000000000; tag_o = (lg_inputs_p) ' (17); end
+    23'b01010_0000000??????????1: begin sel_one_hot_n= 18'b000000000000000001; tag_o = (lg_inputs_p) ' (0); end
+    23'b01010_0000000?????????10: begin sel_one_hot_n= 18'b000000000000000010; tag_o = (lg_inputs_p) ' (1); end
+    23'b01010_0000000????????100: begin sel_one_hot_n= 18'b000000000000000100; tag_o = (lg_inputs_p) ' (2); end
+    23'b01010_0000000???????1000: begin sel_one_hot_n= 18'b000000000000001000; tag_o = (lg_inputs_p) ' (3); end
+    23'b01010_0000000??????10000: begin sel_one_hot_n= 18'b000000000000010000; tag_o = (lg_inputs_p) ' (4); end
+    23'b01010_0000000?????100000: begin sel_one_hot_n= 18'b000000000000100000; tag_o = (lg_inputs_p) ' (5); end
+    23'b01010_0000000????1000000: begin sel_one_hot_n= 18'b000000000001000000; tag_o = (lg_inputs_p) ' (6); end
+    23'b01010_0000000???10000000: begin sel_one_hot_n= 18'b000000000010000000; tag_o = (lg_inputs_p) ' (7); end
+    23'b01010_0000000??100000000: begin sel_one_hot_n= 18'b000000000100000000; tag_o = (lg_inputs_p) ' (8); end
+    23'b01010_0000000?1000000000: begin sel_one_hot_n= 18'b000000001000000000; tag_o = (lg_inputs_p) ' (9); end
+    23'b01010_000000010000000000: begin sel_one_hot_n= 18'b000000010000000000; tag_o = (lg_inputs_p) ' (10); end
+    23'b01011_?????1????????????: begin sel_one_hot_n= 18'b000001000000000000; tag_o = (lg_inputs_p) ' (12); end
+    23'b01011_????10????????????: begin sel_one_hot_n= 18'b000010000000000000; tag_o = (lg_inputs_p) ' (13); end
+    23'b01011_???100????????????: begin sel_one_hot_n= 18'b000100000000000000; tag_o = (lg_inputs_p) ' (14); end
+    23'b01011_??1000????????????: begin sel_one_hot_n= 18'b001000000000000000; tag_o = (lg_inputs_p) ' (15); end
+    23'b01011_?10000????????????: begin sel_one_hot_n= 18'b010000000000000000; tag_o = (lg_inputs_p) ' (16); end
+    23'b01011_100000????????????: begin sel_one_hot_n= 18'b100000000000000000; tag_o = (lg_inputs_p) ' (17); end
+    23'b01011_000000???????????1: begin sel_one_hot_n= 18'b000000000000000001; tag_o = (lg_inputs_p) ' (0); end
+    23'b01011_000000??????????10: begin sel_one_hot_n= 18'b000000000000000010; tag_o = (lg_inputs_p) ' (1); end
+    23'b01011_000000?????????100: begin sel_one_hot_n= 18'b000000000000000100; tag_o = (lg_inputs_p) ' (2); end
+    23'b01011_000000????????1000: begin sel_one_hot_n= 18'b000000000000001000; tag_o = (lg_inputs_p) ' (3); end
+    23'b01011_000000???????10000: begin sel_one_hot_n= 18'b000000000000010000; tag_o = (lg_inputs_p) ' (4); end
+    23'b01011_000000??????100000: begin sel_one_hot_n= 18'b000000000000100000; tag_o = (lg_inputs_p) ' (5); end
+    23'b01011_000000?????1000000: begin sel_one_hot_n= 18'b000000000001000000; tag_o = (lg_inputs_p) ' (6); end
+    23'b01011_000000????10000000: begin sel_one_hot_n= 18'b000000000010000000; tag_o = (lg_inputs_p) ' (7); end
+    23'b01011_000000???100000000: begin sel_one_hot_n= 18'b000000000100000000; tag_o = (lg_inputs_p) ' (8); end
+    23'b01011_000000??1000000000: begin sel_one_hot_n= 18'b000000001000000000; tag_o = (lg_inputs_p) ' (9); end
+    23'b01011_000000?10000000000: begin sel_one_hot_n= 18'b000000010000000000; tag_o = (lg_inputs_p) ' (10); end
+    23'b01011_000000100000000000: begin sel_one_hot_n= 18'b000000100000000000; tag_o = (lg_inputs_p) ' (11); end
+    23'b01100_????1?????????????: begin sel_one_hot_n= 18'b000010000000000000; tag_o = (lg_inputs_p) ' (13); end
+    23'b01100_???10?????????????: begin sel_one_hot_n= 18'b000100000000000000; tag_o = (lg_inputs_p) ' (14); end
+    23'b01100_??100?????????????: begin sel_one_hot_n= 18'b001000000000000000; tag_o = (lg_inputs_p) ' (15); end
+    23'b01100_?1000?????????????: begin sel_one_hot_n= 18'b010000000000000000; tag_o = (lg_inputs_p) ' (16); end
+    23'b01100_10000?????????????: begin sel_one_hot_n= 18'b100000000000000000; tag_o = (lg_inputs_p) ' (17); end
+    23'b01100_00000????????????1: begin sel_one_hot_n= 18'b000000000000000001; tag_o = (lg_inputs_p) ' (0); end
+    23'b01100_00000???????????10: begin sel_one_hot_n= 18'b000000000000000010; tag_o = (lg_inputs_p) ' (1); end
+    23'b01100_00000??????????100: begin sel_one_hot_n= 18'b000000000000000100; tag_o = (lg_inputs_p) ' (2); end
+    23'b01100_00000?????????1000: begin sel_one_hot_n= 18'b000000000000001000; tag_o = (lg_inputs_p) ' (3); end
+    23'b01100_00000????????10000: begin sel_one_hot_n= 18'b000000000000010000; tag_o = (lg_inputs_p) ' (4); end
+    23'b01100_00000???????100000: begin sel_one_hot_n= 18'b000000000000100000; tag_o = (lg_inputs_p) ' (5); end
+    23'b01100_00000??????1000000: begin sel_one_hot_n= 18'b000000000001000000; tag_o = (lg_inputs_p) ' (6); end
+    23'b01100_00000?????10000000: begin sel_one_hot_n= 18'b000000000010000000; tag_o = (lg_inputs_p) ' (7); end
+    23'b01100_00000????100000000: begin sel_one_hot_n= 18'b000000000100000000; tag_o = (lg_inputs_p) ' (8); end
+    23'b01100_00000???1000000000: begin sel_one_hot_n= 18'b000000001000000000; tag_o = (lg_inputs_p) ' (9); end
+    23'b01100_00000??10000000000: begin sel_one_hot_n= 18'b000000010000000000; tag_o = (lg_inputs_p) ' (10); end
+    23'b01100_00000?100000000000: begin sel_one_hot_n= 18'b000000100000000000; tag_o = (lg_inputs_p) ' (11); end
+    23'b01100_000001000000000000: begin sel_one_hot_n= 18'b000001000000000000; tag_o = (lg_inputs_p) ' (12); end
+    23'b01101_???1??????????????: begin sel_one_hot_n= 18'b000100000000000000; tag_o = (lg_inputs_p) ' (14); end
+    23'b01101_??10??????????????: begin sel_one_hot_n= 18'b001000000000000000; tag_o = (lg_inputs_p) ' (15); end
+    23'b01101_?100??????????????: begin sel_one_hot_n= 18'b010000000000000000; tag_o = (lg_inputs_p) ' (16); end
+    23'b01101_1000??????????????: begin sel_one_hot_n= 18'b100000000000000000; tag_o = (lg_inputs_p) ' (17); end
+    23'b01101_0000?????????????1: begin sel_one_hot_n= 18'b000000000000000001; tag_o = (lg_inputs_p) ' (0); end
+    23'b01101_0000????????????10: begin sel_one_hot_n= 18'b000000000000000010; tag_o = (lg_inputs_p) ' (1); end
+    23'b01101_0000???????????100: begin sel_one_hot_n= 18'b000000000000000100; tag_o = (lg_inputs_p) ' (2); end
+    23'b01101_0000??????????1000: begin sel_one_hot_n= 18'b000000000000001000; tag_o = (lg_inputs_p) ' (3); end
+    23'b01101_0000?????????10000: begin sel_one_hot_n= 18'b000000000000010000; tag_o = (lg_inputs_p) ' (4); end
+    23'b01101_0000????????100000: begin sel_one_hot_n= 18'b000000000000100000; tag_o = (lg_inputs_p) ' (5); end
+    23'b01101_0000???????1000000: begin sel_one_hot_n= 18'b000000000001000000; tag_o = (lg_inputs_p) ' (6); end
+    23'b01101_0000??????10000000: begin sel_one_hot_n= 18'b000000000010000000; tag_o = (lg_inputs_p) ' (7); end
+    23'b01101_0000?????100000000: begin sel_one_hot_n= 18'b000000000100000000; tag_o = (lg_inputs_p) ' (8); end
+    23'b01101_0000????1000000000: begin sel_one_hot_n= 18'b000000001000000000; tag_o = (lg_inputs_p) ' (9); end
+    23'b01101_0000???10000000000: begin sel_one_hot_n= 18'b000000010000000000; tag_o = (lg_inputs_p) ' (10); end
+    23'b01101_0000??100000000000: begin sel_one_hot_n= 18'b000000100000000000; tag_o = (lg_inputs_p) ' (11); end
+    23'b01101_0000?1000000000000: begin sel_one_hot_n= 18'b000001000000000000; tag_o = (lg_inputs_p) ' (12); end
+    23'b01101_000010000000000000: begin sel_one_hot_n= 18'b000010000000000000; tag_o = (lg_inputs_p) ' (13); end
+    23'b01110_??1???????????????: begin sel_one_hot_n= 18'b001000000000000000; tag_o = (lg_inputs_p) ' (15); end
+    23'b01110_?10???????????????: begin sel_one_hot_n= 18'b010000000000000000; tag_o = (lg_inputs_p) ' (16); end
+    23'b01110_100???????????????: begin sel_one_hot_n= 18'b100000000000000000; tag_o = (lg_inputs_p) ' (17); end
+    23'b01110_000??????????????1: begin sel_one_hot_n= 18'b000000000000000001; tag_o = (lg_inputs_p) ' (0); end
+    23'b01110_000?????????????10: begin sel_one_hot_n= 18'b000000000000000010; tag_o = (lg_inputs_p) ' (1); end
+    23'b01110_000????????????100: begin sel_one_hot_n= 18'b000000000000000100; tag_o = (lg_inputs_p) ' (2); end
+    23'b01110_000???????????1000: begin sel_one_hot_n= 18'b000000000000001000; tag_o = (lg_inputs_p) ' (3); end
+    23'b01110_000??????????10000: begin sel_one_hot_n= 18'b000000000000010000; tag_o = (lg_inputs_p) ' (4); end
+    23'b01110_000?????????100000: begin sel_one_hot_n= 18'b000000000000100000; tag_o = (lg_inputs_p) ' (5); end
+    23'b01110_000????????1000000: begin sel_one_hot_n= 18'b000000000001000000; tag_o = (lg_inputs_p) ' (6); end
+    23'b01110_000???????10000000: begin sel_one_hot_n= 18'b000000000010000000; tag_o = (lg_inputs_p) ' (7); end
+    23'b01110_000??????100000000: begin sel_one_hot_n= 18'b000000000100000000; tag_o = (lg_inputs_p) ' (8); end
+    23'b01110_000?????1000000000: begin sel_one_hot_n= 18'b000000001000000000; tag_o = (lg_inputs_p) ' (9); end
+    23'b01110_000????10000000000: begin sel_one_hot_n= 18'b000000010000000000; tag_o = (lg_inputs_p) ' (10); end
+    23'b01110_000???100000000000: begin sel_one_hot_n= 18'b000000100000000000; tag_o = (lg_inputs_p) ' (11); end
+    23'b01110_000??1000000000000: begin sel_one_hot_n= 18'b000001000000000000; tag_o = (lg_inputs_p) ' (12); end
+    23'b01110_000?10000000000000: begin sel_one_hot_n= 18'b000010000000000000; tag_o = (lg_inputs_p) ' (13); end
+    23'b01110_000100000000000000: begin sel_one_hot_n= 18'b000100000000000000; tag_o = (lg_inputs_p) ' (14); end
+    23'b01111_?1????????????????: begin sel_one_hot_n= 18'b010000000000000000; tag_o = (lg_inputs_p) ' (16); end
+    23'b01111_10????????????????: begin sel_one_hot_n= 18'b100000000000000000; tag_o = (lg_inputs_p) ' (17); end
+    23'b01111_00???????????????1: begin sel_one_hot_n= 18'b000000000000000001; tag_o = (lg_inputs_p) ' (0); end
+    23'b01111_00??????????????10: begin sel_one_hot_n= 18'b000000000000000010; tag_o = (lg_inputs_p) ' (1); end
+    23'b01111_00?????????????100: begin sel_one_hot_n= 18'b000000000000000100; tag_o = (lg_inputs_p) ' (2); end
+    23'b01111_00????????????1000: begin sel_one_hot_n= 18'b000000000000001000; tag_o = (lg_inputs_p) ' (3); end
+    23'b01111_00???????????10000: begin sel_one_hot_n= 18'b000000000000010000; tag_o = (lg_inputs_p) ' (4); end
+    23'b01111_00??????????100000: begin sel_one_hot_n= 18'b000000000000100000; tag_o = (lg_inputs_p) ' (5); end
+    23'b01111_00?????????1000000: begin sel_one_hot_n= 18'b000000000001000000; tag_o = (lg_inputs_p) ' (6); end
+    23'b01111_00????????10000000: begin sel_one_hot_n= 18'b000000000010000000; tag_o = (lg_inputs_p) ' (7); end
+    23'b01111_00???????100000000: begin sel_one_hot_n= 18'b000000000100000000; tag_o = (lg_inputs_p) ' (8); end
+    23'b01111_00??????1000000000: begin sel_one_hot_n= 18'b000000001000000000; tag_o = (lg_inputs_p) ' (9); end
+    23'b01111_00?????10000000000: begin sel_one_hot_n= 18'b000000010000000000; tag_o = (lg_inputs_p) ' (10); end
+    23'b01111_00????100000000000: begin sel_one_hot_n= 18'b000000100000000000; tag_o = (lg_inputs_p) ' (11); end
+    23'b01111_00???1000000000000: begin sel_one_hot_n= 18'b000001000000000000; tag_o = (lg_inputs_p) ' (12); end
+    23'b01111_00??10000000000000: begin sel_one_hot_n= 18'b000010000000000000; tag_o = (lg_inputs_p) ' (13); end
+    23'b01111_00?100000000000000: begin sel_one_hot_n= 18'b000100000000000000; tag_o = (lg_inputs_p) ' (14); end
+    23'b01111_001000000000000000: begin sel_one_hot_n= 18'b001000000000000000; tag_o = (lg_inputs_p) ' (15); end
+    23'b10000_1?????????????????: begin sel_one_hot_n= 18'b100000000000000000; tag_o = (lg_inputs_p) ' (17); end
+    23'b10000_0????????????????1: begin sel_one_hot_n= 18'b000000000000000001; tag_o = (lg_inputs_p) ' (0); end
+    23'b10000_0???????????????10: begin sel_one_hot_n= 18'b000000000000000010; tag_o = (lg_inputs_p) ' (1); end
+    23'b10000_0??????????????100: begin sel_one_hot_n= 18'b000000000000000100; tag_o = (lg_inputs_p) ' (2); end
+    23'b10000_0?????????????1000: begin sel_one_hot_n= 18'b000000000000001000; tag_o = (lg_inputs_p) ' (3); end
+    23'b10000_0????????????10000: begin sel_one_hot_n= 18'b000000000000010000; tag_o = (lg_inputs_p) ' (4); end
+    23'b10000_0???????????100000: begin sel_one_hot_n= 18'b000000000000100000; tag_o = (lg_inputs_p) ' (5); end
+    23'b10000_0??????????1000000: begin sel_one_hot_n= 18'b000000000001000000; tag_o = (lg_inputs_p) ' (6); end
+    23'b10000_0?????????10000000: begin sel_one_hot_n= 18'b000000000010000000; tag_o = (lg_inputs_p) ' (7); end
+    23'b10000_0????????100000000: begin sel_one_hot_n= 18'b000000000100000000; tag_o = (lg_inputs_p) ' (8); end
+    23'b10000_0???????1000000000: begin sel_one_hot_n= 18'b000000001000000000; tag_o = (lg_inputs_p) ' (9); end
+    23'b10000_0??????10000000000: begin sel_one_hot_n= 18'b000000010000000000; tag_o = (lg_inputs_p) ' (10); end
+    23'b10000_0?????100000000000: begin sel_one_hot_n= 18'b000000100000000000; tag_o = (lg_inputs_p) ' (11); end
+    23'b10000_0????1000000000000: begin sel_one_hot_n= 18'b000001000000000000; tag_o = (lg_inputs_p) ' (12); end
+    23'b10000_0???10000000000000: begin sel_one_hot_n= 18'b000010000000000000; tag_o = (lg_inputs_p) ' (13); end
+    23'b10000_0??100000000000000: begin sel_one_hot_n= 18'b000100000000000000; tag_o = (lg_inputs_p) ' (14); end
+    23'b10000_0?1000000000000000: begin sel_one_hot_n= 18'b001000000000000000; tag_o = (lg_inputs_p) ' (15); end
+    23'b10000_010000000000000000: begin sel_one_hot_n= 18'b010000000000000000; tag_o = (lg_inputs_p) ' (16); end
+    23'b10001_?????????????????1: begin sel_one_hot_n= 18'b000000000000000001; tag_o = (lg_inputs_p) ' (0); end
+    23'b10001_????????????????10: begin sel_one_hot_n= 18'b000000000000000010; tag_o = (lg_inputs_p) ' (1); end
+    23'b10001_???????????????100: begin sel_one_hot_n= 18'b000000000000000100; tag_o = (lg_inputs_p) ' (2); end
+    23'b10001_??????????????1000: begin sel_one_hot_n= 18'b000000000000001000; tag_o = (lg_inputs_p) ' (3); end
+    23'b10001_?????????????10000: begin sel_one_hot_n= 18'b000000000000010000; tag_o = (lg_inputs_p) ' (4); end
+    23'b10001_????????????100000: begin sel_one_hot_n= 18'b000000000000100000; tag_o = (lg_inputs_p) ' (5); end
+    23'b10001_???????????1000000: begin sel_one_hot_n= 18'b000000000001000000; tag_o = (lg_inputs_p) ' (6); end
+    23'b10001_??????????10000000: begin sel_one_hot_n= 18'b000000000010000000; tag_o = (lg_inputs_p) ' (7); end
+    23'b10001_?????????100000000: begin sel_one_hot_n= 18'b000000000100000000; tag_o = (lg_inputs_p) ' (8); end
+    23'b10001_????????1000000000: begin sel_one_hot_n= 18'b000000001000000000; tag_o = (lg_inputs_p) ' (9); end
+    23'b10001_???????10000000000: begin sel_one_hot_n= 18'b000000010000000000; tag_o = (lg_inputs_p) ' (10); end
+    23'b10001_??????100000000000: begin sel_one_hot_n= 18'b000000100000000000; tag_o = (lg_inputs_p) ' (11); end
+    23'b10001_?????1000000000000: begin sel_one_hot_n= 18'b000001000000000000; tag_o = (lg_inputs_p) ' (12); end
+    23'b10001_????10000000000000: begin sel_one_hot_n= 18'b000010000000000000; tag_o = (lg_inputs_p) ' (13); end
+    23'b10001_???100000000000000: begin sel_one_hot_n= 18'b000100000000000000; tag_o = (lg_inputs_p) ' (14); end
+    23'b10001_??1000000000000000: begin sel_one_hot_n= 18'b001000000000000000; tag_o = (lg_inputs_p) ' (15); end
+    23'b10001_?10000000000000000: begin sel_one_hot_n= 18'b010000000000000000; tag_o = (lg_inputs_p) ' (16); end
+    23'b10001_100000000000000000: begin sel_one_hot_n= 18'b100000000000000000; tag_o = (lg_inputs_p) ' (17); end
+    default: begin sel_one_hot_n= {18{1'bx}}; tag_o = (lg_inputs_p) ' (0); end // X 
+  endcase
+end 
+
+assign sel_one_hot_o = sel_one_hot_n;
+assign grants_o      = sel_one_hot_n & {18{grants_en_i}} ;   
+    
+
+if ( hold_on_sr_p ) begin 
+   
+    always_comb begin
+        unique casez( last_r )
+           5'b00000 : hold_on_sr = ( reqs_i == 18'b010000000000000000 );
+           5'b00001 : hold_on_sr = ( reqs_i == 18'b001000000000000000 );
+           5'b00010 : hold_on_sr = ( reqs_i == 18'b000100000000000000 );
+           5'b00011 : hold_on_sr = ( reqs_i == 18'b000010000000000000 );
+           5'b00100 : hold_on_sr = ( reqs_i == 18'b000001000000000000 );
+           5'b00101 : hold_on_sr = ( reqs_i == 18'b000000100000000000 );
+           5'b00110 : hold_on_sr = ( reqs_i == 18'b000000010000000000 );
+           5'b00111 : hold_on_sr = ( reqs_i == 18'b000000001000000000 );
+           5'b01000 : hold_on_sr = ( reqs_i == 18'b000000000100000000 );
+           5'b01001 : hold_on_sr = ( reqs_i == 18'b000000000010000000 );
+           5'b01010 : hold_on_sr = ( reqs_i == 18'b000000000001000000 );
+           5'b01011 : hold_on_sr = ( reqs_i == 18'b000000000000100000 );
+           5'b01100 : hold_on_sr = ( reqs_i == 18'b000000000000010000 );
+           5'b01101 : hold_on_sr = ( reqs_i == 18'b000000000000001000 );
+           5'b01110 : hold_on_sr = ( reqs_i == 18'b000000000000000100 );
+           5'b01111 : hold_on_sr = ( reqs_i == 18'b000000000000000010 );
+           5'b10000 : hold_on_sr = ( reqs_i == 18'b000000000000000001 );
+           5'b10001 : hold_on_sr = ( reqs_i == 18'b100000000000000000 );
+           default : hold_on_sr = 1'b0;
+       endcase
+    end //end of always_comb
+
+end else begin:not_hold_on_sr_p
+    assign hold_on_sr = '0;
+end //end of hold_on_sr_p 
+
+if ( reset_on_sr_p ) begin:reset_on_18 
+    assign reset_on_sr = ( reqs_i == 18'b010000000000000000 ) 
+                       | ( reqs_i == 18'b001000000000000000 ) 
+                       | ( reqs_i == 18'b000100000000000000 ) 
+                       | ( reqs_i == 18'b000010000000000000 ) 
+                       | ( reqs_i == 18'b000001000000000000 ) 
+                       | ( reqs_i == 18'b000000100000000000 ) 
+                       | ( reqs_i == 18'b000000010000000000 ) 
+                       | ( reqs_i == 18'b000000001000000000 ) 
+                       | ( reqs_i == 18'b000000000100000000 ) 
+                       | ( reqs_i == 18'b000000000010000000 ) 
+                       | ( reqs_i == 18'b000000000001000000 ) 
+                       | ( reqs_i == 18'b000000000000100000 ) 
+                       | ( reqs_i == 18'b000000000000010000 ) 
+                       | ( reqs_i == 18'b000000000000001000 ) 
+                       | ( reqs_i == 18'b000000000000000100 ) 
+                       | ( reqs_i == 18'b000000000000000010 ) 
+                       | ( reqs_i == 18'b000000000000000001 ) 
+                       | ( reqs_i == 18'b100000000000000000 ) 
+                       ;
+
+end else begin:not_reset_on_sr_p
+    assign reset_on_sr = '0;
+end //end of reset_on_sr_p 
+
+end: inputs_18
+
 
 assign v_o = | reqs_i ;
 

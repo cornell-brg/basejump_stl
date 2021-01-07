@@ -1,18 +1,18 @@
 `include "bsg_noc_links.vh"
 
-module bsg_mesh_router_buffered #(width_p        = -1
-                                  ,x_cord_width_p = -1
-                                  ,y_cord_width_p = -1
-                                  ,debug_p       = 0
-                                  ,dirs_lp       = 5
-                                  ,stub_p        = { dirs_lp {1'b0}}  // SNEWP
-                                  ,XY_order_p    = 1
-                                  ,bsg_ready_and_link_sif_width_lp=`bsg_ready_and_link_sif_width(width_p)
+module bsg_mesh_router_buffered #( parameter width_p        = -1
+                                  , parameter x_cord_width_p = -1
+                                  , parameter y_cord_width_p = -1
+                                  , parameter debug_p       = 0
+                                  , parameter dirs_lp       = 5
+                                  , parameter stub_p        = { dirs_lp {1'b0}}  // SNEWP
+                                  , parameter XY_order_p    = 1
+                                  , parameter bsg_ready_and_link_sif_width_lp=`bsg_ready_and_link_sif_width(width_p)
                                   // select whether to buffer the output
-                                  ,repeater_output_p = { dirs_lp {1'b0}}  // SNEWP
+                                  , parameter repeater_output_p = { dirs_lp {1'b0}}  // SNEWP
                                   // credit interface
-                                  , use_credits_p = {dirs_lp{1'b0}}
-                                  ,parameter int fifo_els_p[dirs_lp-1:0] = '{2,2,2,2,2}
+                                  ,  parameter use_credits_p = {dirs_lp{1'b0}}
+                                  , parameter int fifo_els_p[dirs_lp-1:0] = '{2,2,2,2,2}
                                   )
    (
     input clk_i
