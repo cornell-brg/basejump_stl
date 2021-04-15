@@ -46,6 +46,9 @@ module bsg_link_source_sync_downstream
  #(parameter channel_width_p                 = 16
   ,parameter lg_fifo_depth_p                 = 6
   ,parameter lg_credit_to_token_decimation_p = 3
+  // When the async_fifo is not on critical path (e.g. when async_fifo size
+  // is small), bypass twofer fifo to minimize buffering and latency
+  ,parameter bypass_twofer_fifo_p            = 0
   )
   
   (// control signals
@@ -109,6 +112,9 @@ module bsg_link_source_sync_downstream
   ,.r_valid_o(core_async_fifo_valid_lo));
 
 
+  if (bypass_twofer_fifo_p == 0)
+  begin
+
    wire core_async_fifo_ready_li;
 
   // Oct 17, 2014
@@ -138,6 +144,14 @@ module bsg_link_source_sync_downstream
 
    // a word was transferred to fifo if ...
    assign core_async_fifo_deque = core_async_fifo_valid_lo & core_async_fifo_ready_li;
+
+  end
+  else
+  begin
+    assign core_valid_o = core_async_fifo_valid_lo;
+    assign core_data_o = core_async_fifo_data_lo;
+    assign core_async_fifo_deque = core_yumi_i;
+  end
 
 
 // **********************************************
